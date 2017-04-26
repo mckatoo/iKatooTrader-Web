@@ -5,19 +5,30 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { IncludesModule } from './includes/includes.module';
+
+import { NavbarComponent } from './includes/navbar/navbar.component';
+import { SearchComponent } from './includes/search/search.component';
+import { SidebarComponent } from './includes/sidebar/sidebar.component';
+
+import { ClientesModule } from './clientes/clientes.module';
+import { PoloniexComponent } from './clientes/poloniex/poloniex.component';
+import { PoloniexService } from './clientes/poloniex/poloniex.service';
+import { HttpUtilService } from './clientes/http-util.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
+    SearchComponent,
+    SidebarComponent,
+    PoloniexComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    IncludesModule
+    HttpModule
   ],
-  providers: [],
+  providers: [HttpUtilService,PoloniexService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
