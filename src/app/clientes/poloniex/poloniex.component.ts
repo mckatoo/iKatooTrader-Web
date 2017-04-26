@@ -9,23 +9,31 @@ import { Ticker } from './ticker';
   styleUrls: ['./poloniex.component.scss']
 })
 export class PoloniexComponent implements OnInit {
-  private tickers: Ticker[];
-  private msgErro: string;
+  tickers= [];
+  msgErro: string;
+  public arrayOfKeys;
 
   constructor(public poloniexService: PoloniexService) { }
 
-  returnTicker() {
-    this.poloniexService.returnTicker()
-      .subscribe(
-        tickers => this.tickers = tickers,
-        error   => this.msgErro = error
-      );
-  }
+  // returnTicker() {
+  //   this.poloniexService.returnTicker()
+  //     .subscribe(
+  //       tickers => this.tickers = tickers,
+  //       error   => this.msgErro = error
+  //     );
+  // }
 
   ngOnInit() {
-    this.returnTicker();
-    // this.tickers = this.poloniexService.returnTicker();
-    // console.log(this.tickers);
+    this.poloniexService.returnTicker()
+      .subscribe(
+        res => {
+          this.tickers = res;
+          this.arrayOfKeys = Object.keys(res);
+          // this.tickers = JSON.parse(JSON.stringify(res));
+          console.log(this.tickers);
+        },
+        error => this.msgErro = error
+      );
   }
 
 }

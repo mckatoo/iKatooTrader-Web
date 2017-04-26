@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { HttpUtilService } from './../http-util.service';
@@ -19,9 +19,15 @@ export class PoloniexService {
   constructor(private http: Http, private httpUtil: HttpUtilService) {}
 
   // METODOS PÚBLICOS DA POLONIEX
+  headers = new Headers({'Content-Type': 'application/json'});
+
+  // getTickers() {
+  //   return this.http.get(this.publicGetUrl+"returnTicker",this.headers)
+  //     .map((response:Response) => response.json());
+  // }
 
   returnTicker(): Observable<Ticker[]> {
-    return this.http.get(this.publicGetUrl+"returnTicker",this.httpUtil.headers())
+    return this.http.get(this.publicGetUrl+"returnTicker",this.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
   }

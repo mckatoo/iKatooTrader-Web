@@ -11,20 +11,30 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>Rendering engine</th>
-            <th>Browser</th>
-            <th>Platform(s)</th>
-            <th>Engine version</th>
-            <th>CSS grade</th>
+            <th>ID</th>
+            <th>Pair</th>
+            <th>quoteVolume</th>
+            <th>high24hr</th>
+            <th>highestBid</th>
+            <th>last</th>
+            <th>low24hr</th>
+            <th>lowestAsk</th>
+            <th>percentChange</th>
+            <th>quoteVolume</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="odd gradeX" *ngFor="let ticker of tickers">
-            <td>{{ticker.id}}</td>
-            <td>Internet Explorer 4.0</td>
-            <td>Win 95+</td>
-            <td class="center"> 4</td>
-            <td class="center">X</td>
+          <tr class="odd gradeX" *ngFor="let key of arrayOfKeys">
+            <td>{{tickers[key].id}}</td>
+            <td>{{key}}</td>
+            <td>{{tickers[key].quoteVolume}}</td>
+            <td>{{tickers[key].high24hr}}</td>
+            <td>{{tickers[key].highestBid}}</td>
+            <td>{{tickers[key].last}}</td>
+            <td>{{tickers[key].low24hr}}</td>
+            <td>{{tickers[key].lowestAsk}}</td>
+            <td>{{tickers[key].percentChange}}</td>
+            <td>{{tickers[key].quoteVolume}}</td>
           </tr>
         </tbody>
       </table>
