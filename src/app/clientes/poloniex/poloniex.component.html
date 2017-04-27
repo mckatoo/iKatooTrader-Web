@@ -11,30 +11,30 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Pair</th>
-            <th>quoteVolume</th>
+            <!--<th>ID</th>-->
+            <th>Paridade</th>
+            <th>Volume</th>
+            <th>Volume de Transação</th>
             <th>high24hr</th>
             <th>highestBid</th>
             <th>last</th>
             <th>low24hr</th>
             <th>lowestAsk</th>
             <th>percentChange</th>
-            <th>quoteVolume</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="odd gradeX" *ngFor="let key of moedas">
-            <td>{{tickers[key].id}}</td>
-            <td>{{key}}</td>
-            <td>{{tickers[key].quoteVolume}}</td>
-            <td>{{tickers[key].high24hr}}</td>
-            <td>{{tickers[key].highestBid}}</td>
-            <td>{{tickers[key].last}}</td>
-            <td>{{tickers[key].low24hr}}</td>
-            <td>{{tickers[key].lowestAsk}}</td>
-            <td>{{tickers[key].percentChange}}</td>
-            <td>{{tickers[key].quoteVolume}}</td>
+          <tr class="odd gradeX" *ngFor="let t of Tickers.ticker">
+            <!--<td>{{t.id}}</td>-->
+            <td>{{t.pair}}</td>
+            <td>{{t.baseVolume}}</td>
+            <td>{{t.quoteVolume}}</td>
+            <td>{{t.high24hr}}</td>
+            <td>{{t.highestBid}}</td>
+            <td>{{t.last}}</td>
+            <td>{{t.low24hr}}</td>
+            <td>{{t.lowestAsk}}</td>
+            <td>{{t.percentChange}}</td>
           </tr>
         </tbody>
       </table>
