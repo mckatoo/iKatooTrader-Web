@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PoloniexService } from './poloniex.service';
-import { Ticker } from './ticker';
 
 @Component({
   selector: 'poloniex',
@@ -11,26 +10,35 @@ import { Ticker } from './ticker';
 export class PoloniexComponent implements OnInit {
   tickers= [];
   msgErro: string;
-  public arrayOfKeys;
+  moedas;
+  Tickers={};
+  // Tickers= [];
 
   constructor(public poloniexService: PoloniexService) { }
-
-  // returnTicker() {
-  //   this.poloniexService.returnTicker()
-  //     .subscribe(
-  //       tickers => this.tickers = tickers,
-  //       error   => this.msgErro = error
-  //     );
-  // }
 
   ngOnInit() {
     this.poloniexService.returnTicker()
       .subscribe(
         res => {
           this.tickers = res;
-          this.arrayOfKeys = Object.keys(res);
-          // this.tickers = JSON.parse(JSON.stringify(res));
-          console.log(this.tickers);
+          this.moedas = Object.keys(res);
+          for (var i = 0; i < this.moedas.length; i++) {
+            this.Tickers["id"]                = res[this.moedas[i]]['id'];
+            this.Tickers["moeda"]             = this.moedas[i];
+            this.Tickers["volumeTransacoes"]  = res[this.moedas[i]]['quoteVolume'];
+            
+            // this.Tickers={
+            //   id: res[this.moedas[i]]['id'],
+            //   moeda: this.moedas[i],
+            //   volumeTransacoes: res[this.moedas[i]]['quoteVolume']
+            // }
+            // this.Tickers.push([
+            //   this.moedas[i],
+            //   res[this.moedas[i]]['id'],
+            //   res[this.moedas[i]]['quoteVolume']
+            // ]);
+          }
+          console.log(this.Tickers);
         },
         error => this.msgErro = error
       );
