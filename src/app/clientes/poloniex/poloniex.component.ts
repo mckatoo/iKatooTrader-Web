@@ -13,6 +13,7 @@ export class PoloniexComponent implements OnInit {
   // tickers= [];
   msgErro: string;
   tickers: Ticker[] = [];
+  currencies = [];
 
   constructor(public poloniexService: PoloniexService) {}
 
@@ -49,9 +50,7 @@ export class PoloniexComponent implements OnInit {
       );
   }
 
-  currencies = [];
-  ngOnInit() {
-    this.returnTicker();
+  returnCurrencies() {
     this.poloniexService.returnCurrencies()
       .subscribe(
         res => {
@@ -66,6 +65,11 @@ export class PoloniexComponent implements OnInit {
           console.log(this.currencies);
         }
       )
+  }
+
+  ngOnInit() {
+    this.returnTicker();
+    this.returnCurrencies();
   }
 
 }

@@ -23,32 +23,32 @@ export class PoloniexService {
 
   // returnTicker() {
   returnTicker():Observable<Ticker[]> {
-    return this.http.get(this.publicGetUrl+"returnTicker",this.headers)
+    return this.http.get(this.publicGetUrl+"returnTicker",this.httpUtil.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
   }
   
   // return24Volume() {
   return24Volume() {
-    return this.http.get(this.publicGetUrl+"return24Volume",this.httpUtil.headers())
+    return this.http.get(this.publicGetUrl+"return24Volume",this.httpUtil.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
   }
   
   returnOrderBook(currencyPair) {
-    return this.http.get(this.publicGetUrl+"returnOrderBook&currencyPair="+ currencyPair +"&depth=10",this.httpUtil.headers())
+    return this.http.get(this.publicGetUrl+"returnOrderBook&currencyPair="+ currencyPair +"&depth=10",this.httpUtil.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
   }
   
   returnTradeHistory(currencyPair,start,end) {
-    return this.http.get(this.publicGetUrl+"returnTradeHistory&currencyPair=" + currencyPair + "&start=" + start + "&end=" + end,this.httpUtil.headers())
+    return this.http.get(this.publicGetUrl+"returnTradeHistory&currencyPair=" + currencyPair + "&start=" + start + "&end=" + end,this.httpUtil.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
   }
   
   returnChartData(currencyPair,start,end,period) {
-    return this.http.get(this.publicGetUrl+"returnChartData&currencyPair=" + currencyPair + "&start=" + start + "&end=" + end + "&period=" + period,this.httpUtil.headers())
+    return this.http.get(this.publicGetUrl+"returnChartData&currencyPair=" + currencyPair + "&start=" + start + "&end=" + end + "&period=" + period,this.httpUtil.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
   }
@@ -61,7 +61,7 @@ export class PoloniexService {
   }
   
   returnLoanOrders(currency) {
-    return this.http.get(this.publicGetUrl+"returnLoanOrders&currency=" + currency,this.httpUtil.headers())
+    return this.http.get(this.publicGetUrl+"returnLoanOrders&currency=" + currency,this.httpUtil.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
   }

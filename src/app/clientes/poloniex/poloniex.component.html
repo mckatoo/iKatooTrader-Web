@@ -1,49 +1,67 @@
 <div class="widget-content">
   <div class="alert alert-danger" role="alert" *ngIf="msgErro">
     {{ msgErro }}
-  </div>  
+  </div>
   <div class="row-fluid">
     <div class="widget-box">
-      <select class="form-control bg_md pull-right">
-        <option value="" *ngFor="let c of currencies">{{c.coin}} - {{c.name}}</option>
-      </select>
-    </div>
-    <div class="widget-box">
-      <div class="widget-title bg_lg">
-        <span class="icon"><i class="icon-th"></i></span>
-        <h5>Poloniex</h5>
-        <div class="pull-right">
-          <button type="button" class="btn btn-inverse btn-mini" (click)="returnTicker()">Atualizar</button>
+      <div class="widget-title">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#tab1">Poloniex</a></li>
+          <li><a data-toggle="tab" href="#tab2">Tab2</a></li>
+          <li><a data-toggle="tab" href="#tab3">Tab3</a></li>
+        </ul>
+      </div>
+      <div class="widget-content tab-content">
+        <div id="tab1" class="tab-pane active">
+          <select class="form-control pull-right span3">
+            <option value="" *ngFor="let c of currencies">{{c.coin}} - {{c.name}}</option>
+          </select>
+          <br>
+          <div class="widget-box">
+            <div class="widget-title bg_lg">
+              <span class="icon"><i class="icon-th"></i></span>
+              <h5>Poloniex</h5>
+              <div class="pull-right">
+                <button type="button" class="btn btn-inverse btn-mini" (click)="returnTicker()">Atualizar</button>
+              </div>
+            </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Paridade</th>
+                  <th>Volume</th>
+                  <th>Volume de Transação</th>
+                  <th>high24hr</th>
+                  <th>highestBid</th>
+                  <th>last</th>
+                  <th>low24hr</th>
+                  <th>lowestAsk</th>
+                  <th>percentChange</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="odd gradeX" *ngFor="let t of tickers" [ngClass]="{'alert alert-error':t.percentChange<0}">
+                  <td>{{t.pair}}</td>
+                  <td>{{t.baseVolume}}</td>
+                  <td>{{t.quoteVolume}}</td>
+                  <td>{{t.high24hr}}</td>
+                  <td>{{t.highestBid}}</td>
+                  <td>{{t.last}}</td>
+                  <td>{{t.low24hr}}</td>
+                  <td>{{t.lowestAsk}}</td>
+                  <td>{{t.percentChange}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="tab2" class="tab-pane">
+
+        </div>
+        <div id="tab3" class="tab-pane">
+          
         </div>
       </div>
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Paridade</th>
-            <th>Volume</th>
-            <th>Volume de Transação</th>
-            <th>high24hr</th>
-            <th>highestBid</th>
-            <th>last</th>
-            <th>low24hr</th>
-            <th>lowestAsk</th>
-            <th>percentChange</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="odd gradeX" *ngFor="let t of tickers">
-            <td>{{t.pair}}</td>
-            <td>{{t.baseVolume}}</td>
-            <td>{{t.quoteVolume}}</td>
-            <td>{{t.high24hr}}</td>
-            <td>{{t.highestBid}}</td>
-            <td>{{t.last}}</td>
-            <td>{{t.low24hr}}</td>
-            <td>{{t.lowestAsk}}</td>
-            <td>{{t.percentChange}}</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>
