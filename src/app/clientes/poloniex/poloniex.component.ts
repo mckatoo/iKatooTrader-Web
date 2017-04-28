@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
 
 import { PoloniexService } from './poloniex.service';
+import { Ticker } from './ticker';
 
 @Component({
   selector: 'poloniex',
@@ -11,48 +12,60 @@ import { PoloniexService } from './poloniex.service';
 export class PoloniexComponent implements OnInit {
   // tickers= [];
   msgErro: string;
-  pairs;
-  Tickers={
-    ticker:[]
-  };
-  // Tickers= [];
+  tickers: Ticker[] = [];
 
-  constructor(public poloniexService: PoloniexService) { }
+  constructor(public poloniexService: PoloniexService) {}
 
   returnTicker() {
+    let keys;
+    this.tickers = [];
     this.poloniexService.returnTicker()
       .subscribe(
         res => {
-          // this.tickers = res;
-          this.pairs = Object.keys(res);
-          for (var i = 0; i < this.pairs.length; i++) {
-            this.Tickers.ticker[i] = {
-              id:           res[this.pairs[i]]['id'],
-              pair:         this.pairs[i],
-              quoteVolume:  res[this.pairs[i]]['quoteVolume'],
-              high24hr:     res[this.pairs[i]]['high24hr'],
-              highestBid:   res[this.pairs[i]]['highestBid'],
-              last:         res[this.pairs[i]]['last'],
-              low24hr:      res[this.pairs[i]]['low24hr'],
-              lowestAsk:    res[this.pairs[i]]['lowestAsk'],
-              percentChange:res[this.pairs[i]]['percentChange'],
-              baseVolume:   res[this.pairs[i]]['baseVolume'],
-              isFrozen:     res[this.pairs[i]]['isFrozen'],
-            }
+          keys = Object.keys(res);
+          for (var i = 0; i < keys.length; i++) {
+            this.tickers.push({
+              id:             res[keys[i]]['id'],
+              pair:           keys[i],
+              quoteVolume:    res[keys[i]]['quoteVolume'],
+              high24hr:       res[keys[i]]['high24hr'],
+              highestBid:     res[keys[i]]['highestBid'],
+              last:           res[keys[i]]['last'],
+              low24hr:        res[keys[i]]['low24hr'],
+              lowestAsk:      res[keys[i]]['lowestAsk'],
+              percentChange:  res[keys[i]]['percentChange'],
+              baseVolume:     res[keys[i]]['baseVolume'],
+              isFrozen:       res[keys[i]]['isFrozen'],
+            });
           }
-          this.Tickers.ticker.sort(function(a, b){
+          this.tickers.sort(function(a, b){
             return b.baseVolume - a.baseVolume
           });
-          // this.Tickers.ticker.reverse();
-          console.log(this.Tickers);
-          return this.Tickers;
+          // this.tickers.reverse();
+          console.log(this.tickers);
+          return this.tickers;
         },
         error => this.msgErro = error
       );
   }
 
+  currencies = [];
   ngOnInit() {
     this.returnTicker();
+    this.poloniexService.returnCurrencies()
+      .subscribe(
+        res => {
+          let keys;
+          keys = Object.keys(res);
+          for (var i = 0; i < keys.length; i++) {
+            this.currencies.push({
+              coin: keys[i],
+              name: res[keys[i]]["name"]
+            })
+          }
+          console.log(this.currencies);
+        }
+      )
   }
 
 }

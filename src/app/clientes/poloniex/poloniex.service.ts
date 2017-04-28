@@ -1,7 +1,9 @@
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
 import { HttpUtilService } from './../http-util.service';
+import { Ticker } from './ticker';
 
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -20,7 +22,7 @@ export class PoloniexService {
   headers = new Headers({'Content-Type': 'application/json'});
 
   // returnTicker() {
-  returnTicker() {
+  returnTicker():Observable<Ticker[]> {
     return this.http.get(this.publicGetUrl+"returnTicker",this.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
@@ -51,8 +53,9 @@ export class PoloniexService {
       .catch(this.httpUtil.processarErros);
   }
   
-  returnCurrencies() {
-    return this.http.get(this.publicGetUrl+"returnCurrencies",this.httpUtil.headers())
+  
+  returnCurrencies(): Observable<Ticker[]> {
+    return this.http.get(this.publicGetUrl+"returnCurrencies",this.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
   }

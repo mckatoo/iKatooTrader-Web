@@ -1,17 +1,24 @@
 <div class="widget-content">
   <div class="alert alert-danger" role="alert" *ngIf="msgErro">
     {{ msgErro }}
-  </div>
+  </div>  
   <div class="row-fluid">
+    <div class="widget-box">
+      <select class="form-control bg_md pull-right">
+        <option value="" *ngFor="let c of currencies">{{c.coin}} - {{c.name}}</option>
+      </select>
+    </div>
     <div class="widget-box">
       <div class="widget-title bg_lg">
         <span class="icon"><i class="icon-th"></i></span>
         <h5>Poloniex</h5>
+        <div class="pull-right">
+          <button type="button" class="btn btn-inverse btn-mini" (click)="returnTicker()">Atualizar</button>
+        </div>
       </div>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <!--<th>ID</th>-->
             <th>Paridade</th>
             <th>Volume</th>
             <th>Volume de Transação</th>
@@ -24,8 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="odd gradeX" *ngFor="let t of Tickers.ticker">
-            <!--<td>{{t.id}}</td>-->
+          <tr class="odd gradeX" *ngFor="let t of tickers">
             <td>{{t.pair}}</td>
             <td>{{t.baseVolume}}</td>
             <td>{{t.quoteVolume}}</td>
