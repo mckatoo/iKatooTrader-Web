@@ -21,14 +21,12 @@ export class PoloniexService {
   // METODOS PÚBLICOS DA POLONIEX
   headers = new Headers({'Content-Type': 'application/json'});
 
-  // returnTicker() {
   returnTicker():Observable<Ticker[]> {
     return this.http.get(this.publicGetUrl+"returnTicker",this.httpUtil.headers)
       .map(this.httpUtil.extrairDados)
       .catch(this.httpUtil.processarErros);
   }
   
-  // return24Volume() {
   return24Volume() {
     return this.http.get(this.publicGetUrl+"return24Volume",this.httpUtil.headers)
       .map(this.httpUtil.extrairDados)

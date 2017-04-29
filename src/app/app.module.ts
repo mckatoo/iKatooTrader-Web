@@ -14,6 +14,10 @@ import { ClientesModule } from './clientes/clientes.module';
 import { PoloniexComponent } from './clientes/poloniex/poloniex.component';
 import { PoloniexService } from './clientes/poloniex/poloniex.service';
 import { HttpUtilService } from './clientes/http-util.service';
+import { LoginComponent } from './login/login.component';
+
+import { routing } from './app.routing';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +25,15 @@ import { HttpUtilService } from './clientes/http-util.service';
     NavbarComponent,
     SearchComponent,
     SidebarComponent,
-    PoloniexComponent
+    PoloniexComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [HttpUtilService,PoloniexService],
   bootstrap: [AppComponent]

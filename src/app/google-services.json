@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1037851155319",
+    "firebase_url": "https://ikatootrading.firebaseio.com",
+    "project_id": "ikatootrading",
+    "storage_bucket": "ikatootrading.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037851155319:android:56ea65ccb66a252b",
+        "android_client_info": {
+          "package_name": "com.ikatoo.trader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037851155319-0nca5dtv2k9d1kjonsosgpqnujbq247h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxDEUJVdHBvr8JoKKjO0eExhPTlM2I37c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

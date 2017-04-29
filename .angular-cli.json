@@ -21,27 +21,7 @@
       "styles": [
         "styles.scss"
       ],
-      "scripts": [
-        "assets/js/jquery.min.js",
-        "assets/js/jquery.ui.custom.js",
-        "assets/js/bootstrap.min.js",
-        "assets/js/jquery.flot.min.js",
-        "assets/js/jquery.flot.resize.min.js",
-        "assets/js/jquery.peity.min.js",
-        "assets/js/fullcalendar.min.js",
-        "assets/js/matrix.js",
-        "assets/js/jquery.gritter.min.js",
-        "assets/js/matrix.interface.js",
-        "assets/js/matrix.chat.js",
-        "assets/js/jquery.validate.js",
-        "assets/js/matrix.form_validation.js",
-        "assets/js/jquery.wizard.js",
-        "assets/js/jquery.uniform.js",
-        "assets/js/select2.min.js",
-        "assets/js/matrix.popover.js",
-        "assets/js/jquery.dataTables.min.js",
-        "assets/js/matrix.tables.js"
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

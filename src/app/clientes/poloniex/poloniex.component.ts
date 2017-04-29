@@ -43,7 +43,7 @@ export class PoloniexComponent implements OnInit {
             return b.baseVolume - a.baseVolume
           });
           // this.tickers.reverse();
-          console.log(this.tickers);
+          // console.log(this.tickers);
           return this.tickers;
         },
         error => this.msgErro = error
@@ -62,7 +62,7 @@ export class PoloniexComponent implements OnInit {
               name: res[keys[i]]["name"]
             })
           }
-          console.log(this.currencies);
+          // console.log(this.currencies);
         }
       )
   }
